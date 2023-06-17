@@ -38,12 +38,13 @@ Current chart version is `0.2.0`
 | nodeSelector | object | `{}` |  |
 | oidcAuthentication.enabled | boolean | `false` | Enable [OIDC authentication](https://datahubproject.io/docs/authentication/guides/sso/configure-oidc-react) |
 | oidcAuthentication.provider | string | `""` | One of the supported OIDC providers: [google](https://datahubproject.io/docs/authentication/guides/sso/configure-oidc-react-google), [okta](https://datahubproject.io/docs/authentication/guides/sso/configure-oidc-react-okta), or [azure](https://datahubproject.io/docs/authentication/guides/sso/configure-oidc-react-azure) |
+| oidcAuthentication.baseUrl | string | `""` | Optional, the base url is only needed when `ingress.false` is set to `false` |
 | oidcAuthentication.clientId | string | `""` | A unique identifier for your application with the identity provider |
 | oidcAuthentication.clientSecret | string | `""` | A shared secret to use for exchange between you and your identity provider |
 | oidcAuthentication.clientSecretRef.secretRef | string | `"nil"` | Optional, this is the reference to the shared secret to use for exchange between you and your identity provider |
 | oidcAuthentication.clientSecretRef.secretKey | string | `"nil"` | Optional, this is the key of the shared secret to use for exchange between you and your identity provider |
 | oidcAuthentication.oktaDomain | string | `""` | Okta domain, e.g. `dev-12345.okta.com`; needed only if `provider` is set to `okta` |
-| oidcAuthentication.azureTenantId | string | `""` | Azure directory (tenant) ID; neede only if `provider` is set to `azure` |
+| oidcAuthentication.azureTenantId | string | `""` | Azure directory (tenant) ID; needed only if `provider` is set to `azure` |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | readinessProbe.initialDelaySeconds | int | `60` |  |

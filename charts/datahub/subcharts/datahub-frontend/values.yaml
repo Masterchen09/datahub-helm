@@ -73,6 +73,9 @@ oidcAuthentication:
   enabled: false
   # provider: google/okta/azure  <- choose only one
 
+  # only needed if ingress is disabled
+  # baseUrl: https://chart-example.local
+
   # clientId: your-client-id
   # clientSecret: your-client-secret
   # only needed if you would like to store the client secret in secret
