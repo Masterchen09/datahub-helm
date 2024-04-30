@@ -8,12 +8,12 @@ revisionHistoryLimit: 10
 
 image:
   repository: acryldata/datahub-frontend-react
-  tag:
+  tag: ""
   pullPolicy: IfNotPresent
   # Override the image's command & args with a new one.
   # This may be necessary for custom startup or shutdown behaviors
-  command:
-  args:
+  command: ""
+  args: []
 
 imagePullSecrets: []
 nameOverride: ""
@@ -28,7 +28,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name:
+  name: ""
 
 podAnnotations: {}
   # co.elastic.logs/enabled: "true"
@@ -160,9 +160,6 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-env:
-  JMXPORT: 1099
 
 livenessProbe:
   initialDelaySeconds: 60

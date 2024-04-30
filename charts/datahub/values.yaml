@@ -4,7 +4,7 @@ datahub-gms:
   enabled: true
   image:
     repository: acryldata/datahub-gms
-    # tag: "v0.11.0 # defaults to .global.datahub.version
+    # tag: "" # defaults to .global.datahub.version
     # Add custom command / arguments to this job.  Useful if you need a custom startup or shutdown script
     # to run
     # command: customCommand
@@ -38,7 +38,7 @@ datahub-frontend:
   enabled: true
   image:
     repository: acryldata/datahub-frontend-react
-    # tag: "v0.11.0" # # defaults to .global.datahub.version
+    # tag: "" # # defaults to .global.datahub.version
     # Add custom command / arguments to this job.  Useful if you need a custom startup or shutdown script
     # to run
     # command: customCommand
@@ -68,7 +68,7 @@ acryl-datahub-actions:
   enabled: true
   image:
     repository: acryldata/datahub-actions
-    tag: "v0.0.15"
+    # tag: ""
     # Add custom command / arguments to this job.  Useful if you need a custom startup or shutdown script
     # to run
     # command: customCommand
@@ -87,7 +87,7 @@ acryl-datahub-actions:
 datahub-mae-consumer:
   image:
     repository: acryldata/datahub-mae-consumer
-    # tag: "v0.11.0" # defaults to .global.datahub.version
+    # tag: "" # defaults to .global.datahub.version
     # Add custom command / arguments to this job.  Useful if you need a custom startup or shutdown script
     # to run
     # command: customCommand
@@ -102,7 +102,7 @@ datahub-mae-consumer:
 datahub-mce-consumer:
   image:
     repository: acryldata/datahub-mce-consumer
-    # tag: "v0.11.0" # defaults to .global.datahub.version
+    # tag: "" # defaults to .global.datahub.version
     # Add custom command / arguments to this job.  Useful if you need a custom startup or shutdown script
     # to run
     # command: customCommand
@@ -118,13 +118,13 @@ datahub-ingestion-cron:
   enabled: false
   image:
     repository: acryldata/datahub-ingestion
-    # tag: "v0.11.0" # defaults to .global.datahub.version
+    # tag: "" # defaults to .global.datahub.version
 
 elasticsearchSetupJob:
   enabled: true
   image:
     repository: acryldata/datahub-elasticsearch-setup
-    # tag: "v0.11.0" # defaults to .global.datahub.version
+    # tag: "" # defaults to .global.datahub.version
     # Add custom command / arguments to this job.  Useful if you need a custom startup or shutdown script
     # to run
     # command: customCommand
@@ -141,12 +141,7 @@ elasticsearchSetupJob:
     fsGroup: 1000
   securityContext:
     runAsUser: 1000
-  annotations:
-    # This is what defines this resource as a hook. Without this line, the
-    # job is considered part of the release.
-    helm.sh/hook: pre-install,pre-upgrade
-    helm.sh/hook-weight: "-5"
-    helm.sh/hook-delete-policy: before-hook-creation
+  annotations: {}
   podAnnotations: {}
   # Add extra sidecar containers to job pod
   extraSidecars: []
@@ -175,12 +170,7 @@ kafkaSetupJob:
     fsGroup: 1000
   securityContext:
     runAsUser: 1000
-  annotations:
-    # This is what defines this resource as a hook. Without this line, the
-    # job is considered part of the release.
-    helm.sh/hook: pre-install,pre-upgrade
-    helm.sh/hook-weight: "-5"
-    helm.sh/hook-delete-policy: before-hook-creation
+  annotations: {}
   podAnnotations: {}
   # Add extra sidecar containers to job pod
   extraSidecars: []
@@ -209,12 +199,7 @@ mysqlSetupJob:
     fsGroup: 1000
   securityContext:
     runAsUser: 1000
-  annotations:
-    # This is what defines this resource as a hook. Without this line, the
-    # job is considered part of the release.
-    helm.sh/hook: pre-install,pre-upgrade
-    helm.sh/hook-weight: "-5"
-    helm.sh/hook-delete-policy: before-hook-creation
+  annotations: {}
   podAnnotations: {}
   # Optionally set a set-up job specific login (defaults to global login)
   # username: "mysqlSetupJob-login"
@@ -248,12 +233,7 @@ postgresqlSetupJob:
     fsGroup: 1000
   securityContext:
     runAsUser: 1000
-  annotations:
-    # This is what defines this resource as a hook. Without this line, the
-    # job is considered part of the release.
-    helm.sh/hook: pre-install,pre-upgrade
-    helm.sh/hook-weight: "-5"
-    helm.sh/hook-delete-policy: before-hook-creation
+  annotations: {}
   podAnnotations: {}
   # Optionally set a set-up job specific login (defaults to global login)
   # username: "postgresqlSetupJob-login"
@@ -290,12 +270,7 @@ datahubUpgrade:
     # fsGroup: 1000
   securityContext: {}
     # runAsUser: 1000
-  annotations:
-    # This is what defines this resource as a hook. Without this line, the
-    # job is considered part of the release.
-    helm.sh/hook: post-install,post-upgrade
-    helm.sh/hook-weight: "-2"
-    helm.sh/hook-delete-policy: before-hook-creation
+  annotations: {}
   podAnnotations: {}
   # Add extra sidecar containers to job pod
   extraSidecars: []
@@ -364,12 +339,7 @@ datahubSystemUpdate:
     # fsGroup: 1000
   securityContext: {}
     # runAsUser: 1000
-  annotations:
-    # This is what defines this resource as a hook. Without this line, the
-    # job is considered part of the release.
-    helm.sh/hook: pre-install,pre-upgrade
-    helm.sh/hook-weight: "-4"
-    helm.sh/hook-delete-policy: before-hook-creation
+  annotations: {}
   # !! Requires version v0.13.0 or greater
   # Split the system update into 2 jobs, one that is blocking the rest of
   # the deployment and the other which is non-blocking. Once the blocking
@@ -377,12 +347,6 @@ datahubSystemUpdate:
   # system is starting.
   nonblocking:
     enabled: false
-    # When mode = 'nonblocking' the nonblocking job should not include the above helm.sh/hook annotations
-    annotations:
-      # This is what defines this resource as a hook. Without this line, the
-      # job is considered part of the release.
-      helm.sh/hook: post-install,post-upgrade
-      helm.sh/hook-delete-policy: before-hook-creation
     image:
       args:
       # Add custom command / arguments to this job.  Useful if you need a custom startup or shutdown script

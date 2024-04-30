@@ -37,8 +37,8 @@ Common labels
 {{- define "datahub-ingestion-cron.labels" -}}
 helm.sh/chart: {{ include "datahub-ingestion-cron.chart" . }}
 {{ include "datahub-ingestion-cron.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- if .Values.global.datahub.version }}
+app.kubernetes.io/version: {{ .Values.global.datahub.version | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}

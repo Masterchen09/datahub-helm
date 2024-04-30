@@ -5,12 +5,12 @@ replicaCount: 1
 
 image:
   repository: acryldata/datahub-actions
-  tag: "v0.0.1"
+  tag: ""
   pullPolicy: IfNotPresent
   # Override the image's command & args with a new one.
   # This may be necessary for custom startup or shutdown behaviors
-  command:
-  args:
+  command: ""
+  args: []
 
 imagePullSecrets: []
 nameOverride: ""
@@ -25,7 +25,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name:
+  name: ""
 
 podAnnotations: {}
 
@@ -33,7 +33,7 @@ podSecurityContext: {}
 
 securityContext: {}
 
-priorityClassName:
+priorityClassName: ""
 
 service:
   type: ClusterIP

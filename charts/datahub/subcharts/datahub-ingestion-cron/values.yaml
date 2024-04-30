@@ -4,7 +4,7 @@
 
 image:
   repository: acryldata/datahub-ingestion
-  tag:
+  tag: ""
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -48,7 +48,7 @@ crons: {}
   #           server: http://localhost:8080
 
     # Command to be executed
-#    command: "datahub ingest -c <recipe.fileName>"
+    #command: "datahub ingest -c <recipe.fileName>"
 
     ## Deployment pod host aliases
     ## https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/

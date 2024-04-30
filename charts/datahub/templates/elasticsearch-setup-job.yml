@@ -5,10 +5,13 @@ metadata:
   name: {{ .Release.Name }}-elasticsearch-setup-job
   labels:
     {{- include "datahub.labels" . | nindent 4 }}
-  {{- with .Values.elasticsearchSetupJob.annotations }}
   annotations:
+    helm.sh/hook: pre-install,pre-upgrade
+    helm.sh/hook-weight: "-5"
+    helm.sh/hook-delete-policy: before-hook-creation
+    {{- with .Values.elasticsearchSetupJob.annotations }} 
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
 spec:
   template:
     {{- if or .Values.global.podLabels .Values.elasticsearchSetupJob.podAnnotations }}

@@ -37,8 +37,8 @@ Common labels
 {{- define "datahub-gms.labels" -}}
 helm.sh/chart: {{ include "datahub-gms.chart" . }}
 {{ include "datahub-gms.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- if .Values.global.datahub.version }}
+app.kubernetes.io/version: {{ .Values.global.datahub.version | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}

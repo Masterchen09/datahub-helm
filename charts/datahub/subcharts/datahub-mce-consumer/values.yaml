@@ -9,11 +9,11 @@ revisionHistoryLimit: 10
 image:
   repository: acryldata/datahub-mce-consumer
   pullPolicy: IfNotPresent
-  tag:
+  tag: ""
   # Override the image's command & args with a new one.
   # This may be necessary for custom startup or shutdown behaviors
-  command:
-  args:
+  command: ""
+  args: []
 
 imagePullSecrets: []
 nameOverride: ""
@@ -28,8 +28,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name:
-
+  name: ""
 
 podAnnotations: {}
   # co.elastic.logs/enabled: "true"
@@ -121,9 +120,6 @@ tolerations: []
 
 affinity: {}
 
-env:
-  JMXPORT: 1099
-
 livenessProbe:
   initialDelaySeconds: 60
   periodSeconds: 30
@@ -185,10 +181,11 @@ global:
     ## Enables diff mode for graph writes, uses a different code path that produces a diff from previous to next to write relationships instead of wholesale deleting edges and reading
     enableGraphDiffMode: true
 
-  hostAliases:
-    - ip: "192.168.0.104"
-      hostnames:
-        - "broker"
-        - "mysql"
-        - "elasticsearch"
-        - "neo4j"
+#  hostAliases:
+#    - ip: "192.168.0.104"
+#      hostnames:
+#        - "broker"
+#        - "mysql"
+#        - "postgresql"
+#        - "elasticsearch"
+#        - "neo4j"

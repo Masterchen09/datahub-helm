@@ -37,8 +37,8 @@ Common labels
 {{- define "datahub-mce-consumer.labels" -}}
 helm.sh/chart: {{ include "datahub-mce-consumer.chart" . }}
 {{ include "datahub-mce-consumer.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- if .Values.global.datahub.version }}
+app.kubernetes.io/version: {{ .Values.global.datahub.version | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end -}}

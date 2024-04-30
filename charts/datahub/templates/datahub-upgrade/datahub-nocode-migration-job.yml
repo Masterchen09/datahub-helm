@@ -5,10 +5,13 @@ metadata:
   name: {{ .Release.Name }}-nocode-migration-job
   labels:
     {{- include "datahub.labels" . | nindent 4 }}
-  {{- with .Values.datahubUpgrade.annotations }}
   annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "-2"
+    helm.sh/hook-delete-policy: before-hook-creation
+    {{- with .Values.datahubUpgrade.annotations }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
 spec:
   template:
     {{- if or .Values.global.podLabels .Values.datahubUpgrade.podAnnotations}}
